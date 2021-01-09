@@ -34,6 +34,7 @@ provider:
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
+        - dynamodb:DeleteItem
       Resource: "*"
 
 
@@ -77,9 +78,15 @@ functions:
   createJoke:
     handler: createJoke.createJoke
     events:
-      - http: 
+      - http:
           path: createJoke
           method: post
+  deleteJoke:
+    handler: deleteJoke.deleteJoke
+    events:
+      - http:
+          path: deleteJoke
+          method: delete
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
